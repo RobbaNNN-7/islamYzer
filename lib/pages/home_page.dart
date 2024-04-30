@@ -23,8 +23,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  //pages to display
-
   final List<Widget> _pages = [
     const QuranPage(),
     const HadithPage(),
