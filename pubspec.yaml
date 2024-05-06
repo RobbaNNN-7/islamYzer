@@ -29,6 +29,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
+
   flutter:
     sdk: flutter
 
@@ -38,6 +40,10 @@ dependencies:
  
   cupertino_icons: ^1.0.6
   google_nav_bar: ^5.0.6
+  flutter_cached_pdfview: ^0.4.2
+  syncfusion_flutter_pdfviewer: ^25.1.42
+
+  
 
 
 dev_dependencies:
@@ -50,6 +56,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+
+  
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -66,6 +75,7 @@ flutter:
   
   assets:
     - lib/images/
+    - lib/pdf/Holy-Quran-Para-1.pdf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

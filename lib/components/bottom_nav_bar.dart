@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -12,7 +12,7 @@ class MyBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: GNav(
-            color: Color.fromARGB(255, 76, 75, 75),
+            color: Color.fromARGB(255, 250, 247, 247),
             activeColor: const Color.fromARGB(255, 255, 255, 255),
             tabActiveBorder: Border.all(color: Colors.white),
             tabBackgroundColor: Colors.grey.shade100,

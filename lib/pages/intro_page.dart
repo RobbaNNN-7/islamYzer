@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,7 +10,7 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(96, 71, 68, 68),
+      backgroundColor: Color.fromARGB(255, 32, 32, 32),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0.0),
@@ -21,12 +21,12 @@ class IntroPage extends StatelessWidget {
 
               // Image.asset('lib/images/banner2.jpg'),
               Container(
-                width: 900,
-                height: 200,
+                width: 500,
+                height: 400,
                 padding: EdgeInsets.all(25),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('lib/images/banner2.jpg'),
+                    image: AssetImage('lib/images/quran_logo.png'),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(33),
@@ -61,9 +61,10 @@ class IntroPage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => HomePage())),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey[900],
+                      color: Color.fromARGB(255, 48, 47, 47),
                       borderRadius: BorderRadius.circular(12)),
                   padding: EdgeInsets.all(25),
+                  margin: EdgeInsets.all(12),
                   child: Center(
                     child: Text(
                       "Quran",
