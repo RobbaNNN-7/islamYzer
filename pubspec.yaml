@@ -41,7 +41,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_nav_bar: ^5.0.6
   flutter_cached_pdfview: ^0.4.2
-  syncfusion_flutter_pdfviewer: ^25.1.42
+
+  syncfusion_flutter_pdfviewer: ^25.2.3
 
   
 
