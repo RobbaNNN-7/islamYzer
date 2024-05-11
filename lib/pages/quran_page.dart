@@ -1,13 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_super_parameters, prefer_const_constructors
 
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-// import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class QuranPage extends StatefulWidget {
-  const QuranPage({super.key});
+  const QuranPage({Key? key}) : super(key: key);
 
   @override
   State<QuranPage> createState() => _QuranPageState();
@@ -23,59 +22,79 @@ class _QuranPageState extends State<QuranPage> {
     {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
     {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
     {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"},
-    {"name": "Surah Fatiha", "path": "lib/pdf/Holy-Quran-Para-1.pdf"}
   ];
+
+  late List<Map<String, String>> filteredSurahs = [];
+
+  TextEditingController searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    filteredSurahs = surahs;
+  }
+
+  void filterSurahs(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredSurahs = surahs;
+      } else {
+        filteredSurahs = surahs
+            .where((surah) =>
+                surah["name"]!.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // search bar
+        // Search bar
         Container(
           padding: EdgeInsets.all(12),
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-              color: Colors.grey[900], borderRadius: BorderRadius.circular(20)),
+            color: Colors.grey[900],
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Search",
-                style: TextStyle(color: Colors.grey[100]),
+              Expanded(
+                child: TextField(
+                  controller: searchController,
+                  onChanged: filterSurahs,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Search Surahs...',
+                    hintStyle: TextStyle(color: Colors.grey[400]),
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
-              Icon(
-                Icons.search,
-                color: Colors.grey[100],
+              IconButton(
+                icon: Icon(Icons.search, color: Colors.white),
+                onPressed: () {},
               ),
             ],
           ),
         ),
 
-        //  message
+        // Message
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
-          child: Text("بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ",
-              style: TextStyle(color: Colors.grey[100])),
+          child: Text(
+            "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ",
+            style: TextStyle(color: Colors.grey[100]),
+          ),
         ),
 
-        /**
-         * 
-         * QURAN PDF VIEWER OF EVERY SURAH
-        */
-
+        // List of Surah buttons
         Expanded(
           child: ListView.builder(
-            itemCount: surahs.length,
+            itemCount: filteredSurahs.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -86,20 +105,22 @@ class _QuranPageState extends State<QuranPage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => SfPdfViewer.file(
-                          File('lib\\pdf\\Holy-Quran-Para-1.pdf'),
+                          File(filteredSurahs[index]["path"]!),
                         ),
                       ),
                     );
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.grey[900]!, // Change the button color here
+                      Colors.grey[900]!, // Button color
                     ),
-                    padding: MaterialStateProperty.all(
-                        EdgeInsets.symmetric(vertical: 36, horizontal: 24)),
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      EdgeInsets.symmetric(
+                          vertical: 35, horizontal: 30), // Button padding
+                    ),
                   ),
                   child: Text(
-                    surahs[index]["name"]!,
+                    filteredSurahs[index]["name"]!,
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -111,24 +132,3 @@ class _QuranPageState extends State<QuranPage> {
     );
   }
 }
-
-// class PDFviewer extends StatelessWidget {
-//   const PDFviewer({super.key, required this.url});
-
-//   final String url;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: PDF().cachedFromUrl(
-//         url,
-//         placeholder: (progress) => Center(
-//           child: Text('$progress %'),
-//         ),
-//         errorWidget: (error) => Center(
-//           child: Text(error.toString()),
-//         ),
-//       ),
-//     );
-//   }
-// }

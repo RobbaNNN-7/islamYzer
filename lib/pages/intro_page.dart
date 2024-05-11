@@ -37,7 +37,7 @@ class IntroPage extends StatelessWidget {
 
               // title
               Text(
-                "Just Do It",
+                "To God We Belong",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
@@ -67,7 +67,7 @@ class IntroPage extends StatelessWidget {
                   margin: EdgeInsets.all(12),
                   child: Center(
                     child: Text(
-                      "Quran",
+                      "Let's Learn Quran",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
