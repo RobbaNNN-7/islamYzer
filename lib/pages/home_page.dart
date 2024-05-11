@@ -1,14 +1,13 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, unused_import, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, unused_import, prefer_const_literals_to_create_immutables, use_super_parameters
 
 import 'package:flutter/material.dart';
 import 'package:islamyzer/components/bottom_nav_bar.dart';
-import 'package:islamyzer/main.dart';
 import 'package:islamyzer/pages/hadith_page.dart';
 import 'package:islamyzer/pages/quran_page.dart';
 import 'package:islamyzer/pages/quran_player.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -24,9 +23,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _pages = [
-    const QuranPage(),
-    const HadithPage(),
-    const QuranPlayer()
+    QuranPage(),
+    HadithPage(),
+    QuranPlayer(),
   ];
 
   @override
@@ -38,15 +37,17 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: Builder(builder: (context) {
-          return IconButton(
-            icon: Icon(Icons.menu),
-            color: Colors.white,
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          );
-        }),
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              icon: Icon(Icons.menu),
+              color: Colors.white,
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
+        ),
       ),
       drawer: Drawer(
         backgroundColor: Colors.grey[900],
@@ -54,84 +55,95 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             //logo
-
             Column(
               children: [
                 DrawerHeader(
-                    child: Image.asset(
-                  'lib/images/quran_logo.png',
-                  color: Colors.white,
-                )),
+                  child: Image.asset(
+                    'lib/images/quran_logo.png',
+                    color: Colors.white,
+                  ),
+                ),
 
                 // divider
-
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 25.0, vertical: 10),
                   child: Divider(color: Colors.grey[900]),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.home,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      "HOME TAB",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                // Home Tab
+                ListTile(
+                  leading: Icon(
+                    Icons.library_books_rounded,
+                    color: Colors.white,
                   ),
+                  title: Text(
+                    "Quran Page",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    // Navigate to Home Page
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                  },
                 ),
 
-                // 2nd slide
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.menu_book_outlined,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      "QURAN PAGE",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                // Quran Page
+                ListTile(
+                  leading: Icon(
+                    Icons.menu_book,
+                    color: Colors.white,
                   ),
+                  title: Text(
+                    "Hadith Page",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    // Navigate to Quran Page
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 1;
+                    });
+                  },
                 ),
 
-                // 3rd
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 25),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.library_books,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      "Hadith Page",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                // Hadith Page
+                ListTile(
+                  leading: Icon(
+                    Icons.queue_music_outlined,
+                    color: Colors.white,
                   ),
+                  title: Text(
+                    "Quran Player",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    // Navigate to Hadith Page
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 2;
+                    });
+                  },
                 ),
               ],
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(left: 25),
-              child: ListTile(
-                leading: Icon(
-                  Icons.exit_to_app_sharp,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  "QUIT",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
+            // Quit
+            ListTile(
+              leading: Icon(
+                Icons.exit_to_app_sharp,
+                color: Colors.white,
               ),
+              title: Text(
+                "QUIT",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              onTap: () {
+                // Handle Quit action
+              },
             ),
           ],
         ),
