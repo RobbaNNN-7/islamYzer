@@ -6,6 +6,7 @@ import 'package:islamyzer/pages/hadith_page.dart';
 import 'package:islamyzer/pages/quran_full.dart';
 import 'package:islamyzer/pages/quran_page.dart';
 import 'package:islamyzer/pages/quran_player.dart';
+import 'package:islamyzer/pages/translation_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,8 +27,9 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     SurahListPage(),
     HadithPage(),
-    QuranPlayer(),
+    SurahList(),
     QuranFull(),
+    QuranPlayer(),
   ];
 
   @override
@@ -144,6 +146,24 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pop(context); // Close Drawer
                     setState(() {
                       _selectedIndex = 3;
+                    });
+                  },
+                ),
+
+                ListTile(
+                  leading: Icon(
+                    Icons.receipt_long,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Translation Page",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    // Navigate to Hadith Page
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 4;
                     });
                   },
                 ),
