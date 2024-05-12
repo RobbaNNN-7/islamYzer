@@ -41,9 +41,10 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_nav_bar: ^5.0.6
   flutter_cached_pdfview: ^0.4.2
-
   syncfusion_flutter_pdfviewer: ^25.2.3
-
+  just_audio: ^0.9.37
+  http: ^1.2.1
+  path_provider: ^2.1.3
   
 
 

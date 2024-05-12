@@ -82,7 +82,8 @@ class _HadithPage extends State<HadithPage> {
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: 'Search Hadith...',
-                    hintStyle: TextStyle(color: Colors.grey[400]),
+                    hintStyle: TextStyle(
+                        color: const Color.fromARGB(255, 255, 255, 255)),
                     border: InputBorder.none,
                   ),
                 ),
@@ -100,7 +101,10 @@ class _HadithPage extends State<HadithPage> {
           padding: const EdgeInsets.symmetric(vertical: 25),
           child: Text(
             "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ",
-            style: TextStyle(color: Colors.grey[100]),
+            style: TextStyle(
+                color: Colors.grey[100],
+                fontWeight: FontWeight.bold,
+                fontSize: 18),
           ),
         ),
 

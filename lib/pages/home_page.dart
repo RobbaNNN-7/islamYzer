@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:islamyzer/components/bottom_nav_bar.dart';
 import 'package:islamyzer/pages/hadith_page.dart';
+import 'package:islamyzer/pages/quran_full.dart';
 import 'package:islamyzer/pages/quran_page.dart';
 import 'package:islamyzer/pages/quran_player.dart';
 
@@ -23,9 +24,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _pages = [
-    QuranPage(),
+    SurahListPage(),
     HadithPage(),
     QuranPlayer(),
+    QuranFull(),
   ];
 
   @override
@@ -33,9 +35,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       bottomNavigationBar:
           MyBottomNavBar(onTabChange: (index) => navigateBottomBar(index)),
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromARGB(115, 65, 62, 62),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color.fromARGB(0, 190, 171, 171),
         elevation: 0,
         leading: Builder(
           builder: (context) {
@@ -78,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.white,
                   ),
                   title: Text(
-                    "Quran Page",
+                    "Surah List",
                     style: TextStyle(color: Colors.white),
                   ),
                   onTap: () {
@@ -124,6 +126,24 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pop(context); // Close Drawer
                     setState(() {
                       _selectedIndex = 2;
+                    });
+                  },
+                ),
+
+                ListTile(
+                  leading: Icon(
+                    Icons.receipt_long,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Quran Page",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    // Navigate to Hadith Page
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 3;
                     });
                   },
                 ),

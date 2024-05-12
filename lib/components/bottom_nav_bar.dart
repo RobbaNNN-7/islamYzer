@@ -20,7 +20,7 @@ class MyBottomNavBar extends StatelessWidget {
             tabs: [
           GButton(
             icon: Icons.my_library_books,
-            text: 'Quran',
+            text: 'Surah List',
             textColor: Colors.black,
             iconColor: Colors.white,
             iconActiveColor: Colors.grey[900],
@@ -38,7 +38,14 @@ class MyBottomNavBar extends StatelessWidget {
             iconColor: Colors.white,
             textColor: Colors.black,
             iconActiveColor: Colors.grey[900],
-          )
+          ),
+          GButton(
+            icon: Icons.queue_music,
+            text: 'Quran Page',
+            iconColor: Colors.white,
+            textColor: Colors.black,
+            iconActiveColor: Colors.grey[900],
+          ),
         ]));
   }
 }
