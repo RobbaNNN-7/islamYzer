@@ -40,7 +40,7 @@ class MyBottomNavBar extends StatelessWidget {
             iconActiveColor: Colors.grey[900],
           ),
           GButton(
-            icon: Icons.queue_music,
+            icon: Icons.receipt_long_outlined,
             text: 'Quran Page',
             iconColor: Colors.white,
             textColor: Colors.black,
