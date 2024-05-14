@@ -33,7 +33,7 @@ class MyBottomNavBar extends StatelessWidget {
             iconActiveColor: Colors.grey[900],
           ),
           GButton(
-            icon: Icons.queue_music,
+            icon: Icons.earbuds,
             text: 'Translation',
             iconColor: Colors.white,
             textColor: Colors.black,

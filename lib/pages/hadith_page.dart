@@ -16,22 +16,22 @@ class _HadithPage extends State<HadithPage> {
   final List<Map<String, String>> surahs = [
     {
       "name": "Sahih Bukhari",
-      "path": "lib/pdf/Holy-Quran-Para-1.pdf",
+      "path": "lib/pdf/bukhari.pdf",
       "image": "lib/images/bukhari.jpg"
     },
     {
       "name": "Sahih Muslim",
-      "path": "lib/pdf/Holy-Quran-Para-1.pdf",
+      "path": "lib/pdf/bukhari.pdf",
       "image": "lib/images/muslim.jpeg"
     },
     {
       "name": "Al-Tirmizi",
-      "path": "lib/pdf/Holy-Quran-Para-1.pdf",
+      "path": "lib/pdf/bukhari.pdf",
       "image": "lib/images/tirmizi.jpeg"
     },
     {
       "name": "Mishkat-ul-Masabeeh",
-      "path": "lib/pdf/Holy-Quran-Para-1.pdf",
+      "path": "lib/pdf/bukhari.pdf",
       "image": "lib/images/mishkat.jpg"
     },
   ];

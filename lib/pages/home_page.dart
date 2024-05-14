@@ -27,9 +27,9 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     SurahListPage(),
     HadithPage(),
+    QuranPlayer(),
     SurahList(),
     QuranFull(),
-    QuranPlayer(),
   ];
 
   @override
@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
 
                 ListTile(
                   leading: Icon(
-                    Icons.receipt_long,
+                    Icons.earbuds_outlined,
                     color: Colors.white,
                   ),
                   title: Text(
