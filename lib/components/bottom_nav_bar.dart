@@ -34,14 +34,14 @@ class MyBottomNavBar extends StatelessWidget {
           ),
           GButton(
             icon: Icons.earbuds,
-            text: 'Translation',
+            text: 'Recitation',
             iconColor: Colors.white,
             textColor: Colors.black,
             iconActiveColor: Colors.grey[900],
           ),
           GButton(
             icon: Icons.receipt_long_outlined,
-            text: 'Quran Page',
+            text: 'Translation',
             iconColor: Colors.white,
             textColor: Colors.black,
             iconActiveColor: Colors.grey[900],

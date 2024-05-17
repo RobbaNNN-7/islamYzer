@@ -7,6 +7,8 @@ import 'package:islamyzer/pages/quran_full.dart';
 import 'package:islamyzer/pages/quran_page.dart';
 import 'package:islamyzer/pages/quran_player.dart';
 import 'package:islamyzer/pages/translation_page.dart';
+import 'package:islamyzer/pages/login_page.dart';
+import 'package:islamyzer/pages/register_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -30,6 +32,8 @@ class _HomePageState extends State<HomePage> {
     QuranPlayer(),
     SurahList(),
     QuranFull(),
+    LoginPage(),
+    RegisterPage(),
   ];
 
   @override
@@ -164,6 +168,57 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pop(context); // Close Drawer
                     setState(() {
                       _selectedIndex = 4;
+                    });
+                  },
+                ),
+
+                ListTile(
+                  leading: Icon(
+                    Icons.login,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Login",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 5;
+                    });
+                  },
+                ),
+
+                ListTile(
+                  leading: Icon(
+                    Icons.app_registration,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Sign Up",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 6;
+                    });
+                  },
+                ),
+
+                ListTile(
+                  leading: Icon(
+                    Icons.account_circle,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Accounts",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context); // Close Drawer
+                    setState(() {
+                      _selectedIndex = 7;
                     });
                   },
                 ),
