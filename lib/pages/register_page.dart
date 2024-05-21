@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -15,9 +17,77 @@ class _RegisterPageState extends State<RegisterPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  Future<void> _register() async {
+    final String username = _usernameController.text;
+    final String password = _passwordController.text;
+    final Uri apiUrl = Uri(
+      scheme: 'https',
+      host: 'hisham09.pythonanywhere.com',
+      path: '/api/accounts/signup',
+    );
+
+    final response = await http.post(
+      apiUrl,
+      headers: {
+        'Authorization':
+            'Basic ${base64Encode(utf8.encode('root:toor'))}',
+      },
+      body: jsonEncode(<String, String>{
+        'username': username,
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[700],
+            title: Text('Success', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+            content: Text('You have successfully signed up!', style: TextStyle(color: Colors.white)),
+            actions: <Widget>[
+              TextButton(
+                child: Text('OK', style: TextStyle(color: Colors.white)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      String errorMessage;
+      try {
+        var errorData = jsonDecode(response.body);
+        errorMessage = errorData['detail'] ?? 'An error occurred during signup.';
+      } catch (e) {
+        errorMessage = response.body;
+      }
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text(errorMessage),
+            actions: <Widget>[
+              TextButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       backgroundColor: Color.fromARGB(115, 65, 62, 62),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(0, 190, 171, 171),
@@ -30,55 +100,8 @@ class _RegisterPageState extends State<RegisterPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                controller: _firstNameController,
-                decoration: InputDecoration(
-                  labelText: 'First Name',
-                  labelStyle: TextStyle(color: Colors.white),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your first name';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                controller: _lastNameController,
-                decoration: InputDecoration(
-                  labelText: 'Last Name',
-                  labelStyle: TextStyle(color: Colors.white),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your last name';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
                 controller: _usernameController,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Username',
                   labelStyle: TextStyle(color: Colors.white),
@@ -95,6 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: _passwordController,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Password',
                   labelStyle: TextStyle(color: Colors.white),
@@ -111,9 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Processing Data')),
-                  );
+                  _register();
                 }
               },
               child: Text('Submit'),
