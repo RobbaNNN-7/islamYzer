@@ -187,7 +187,10 @@ class QuranPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quran Verses'),
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Quran Verses', /////////////
+        ),
       ),
       backgroundColor: Colors.grey[900], // Set background color to grey[700]
       body: FutureBuilder(

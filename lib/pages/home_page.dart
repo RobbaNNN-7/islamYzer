@@ -9,6 +9,7 @@ import 'package:islamyzer/pages/quran_player.dart';
 import 'package:islamyzer/pages/translation_page.dart';
 import 'package:islamyzer/pages/login_page.dart';
 import 'package:islamyzer/pages/register_page.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -218,7 +219,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.pop(context); // Close Drawer
                     setState(() {
-                      _selectedIndex = 7;
+                      _selectedIndex = 6;
                     });
                   },
                 ),
@@ -237,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                // Handle Quit action
+                SystemNavigator.pop();
               },
             ),
           ],

@@ -37,7 +37,7 @@ class IntroPage extends StatelessWidget {
 
               // title
               Text(
-                "To God We Belong",
+                "JUST DO IT ",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,

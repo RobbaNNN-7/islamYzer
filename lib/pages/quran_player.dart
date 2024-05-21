@@ -92,10 +92,10 @@ class _QuranPlayerState extends State<QuranPlayer> {
 
   void stopAudio() async {
     await audioPlayer.stop();
-    setState(() {
-      currentVerseIndex = 0;
-      audioUrls.clear();
-    });
+    // setState(() {
+    //   currentVerseIndex = 0;
+    //   audioUrls.clear();
+    // });
   }
 
   @override
