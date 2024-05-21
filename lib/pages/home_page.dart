@@ -206,23 +206,6 @@ class _HomePageState extends State<HomePage> {
                     });
                   },
                 ),
-
-                ListTile(
-                  leading: Icon(
-                    Icons.account_circle,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Accounts",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context); // Close Drawer
-                    setState(() {
-                      _selectedIndex = 6;
-                    });
-                  },
-                ),
               ],
             ),
 
